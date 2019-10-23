@@ -45,17 +45,16 @@ public class VolleyRequestClass {
     }
 
     public void multipartVolley(final Bitmap bitmap, final Map<String, String> jsonDatas, final String dataRequestURL) {
-        final SetSpinner setSpinner = new SetSpinner(mCurrentActivity);
-        startSpinner(dataRequestURL, setSpinner);
+        //final SetSpinner setSpinner = new SetSpinner(mCurrentActivity);
+        //startSpinner(dataRequestURL, setSpinner);
 
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, dataRequestURL,
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.GET, dataRequestURL,
                 new Response.Listener<NetworkResponse>() {
                     @Override
                     public void onResponse(NetworkResponse response) {
 
-                        stopSpinner(dataRequestURL, setSpinner);
+                        //stopSpinner(dataRequestURL, setSpinner);
 
-                        Log.e("tag",response.toString());
                         try {
                             JSONArray obj = new JSONArray(new String(response.data));
                             mCurrentInterface.responseResult(obj,jsonDatas.get("tag"));
@@ -70,7 +69,7 @@ public class VolleyRequestClass {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        stopSpinner(dataRequestURL, setSpinner);
+                        //stopSpinner(dataRequestURL, setSpinner);
 
                         error.printStackTrace();
                         errorToast();
